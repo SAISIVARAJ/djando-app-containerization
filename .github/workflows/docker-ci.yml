@@ -1,5 +1,4 @@
-
-name: Django Docker CI
+name: CI/CD Pipeline
 
 on:
   push:
@@ -7,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-push:
+  build-push-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,3 +24,20 @@ jobs:
 
     - name: Push Docker Image
       run: docker push sain143/sai-repo1:latest
+
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          docker pull sain143/sai-repo1:latest
+          docker stop sai-app || true
+          docker rm sai-app || true
+          docker run -d \
+            --restart unless-stopped \
+            -p 8081:8080 \
+            --name sai-app \
+            sain143/sai-repo1:latest
+
