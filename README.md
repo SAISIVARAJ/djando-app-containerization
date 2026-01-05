@@ -1,4 +1,4 @@
-# Django Application Deployment using Docker & EC2
+# Django Application Containerization & Deployment on AWS EC2
 
 This project demonstrates how a **legacy Django application** is containerized using **Docker**, published to **Docker Hub**, and deployed on an **AWS EC2 instance** to make it accessible from anywhere via a public IP.
 
