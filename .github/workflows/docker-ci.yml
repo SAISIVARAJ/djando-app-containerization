@@ -13,6 +13,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
+    - name: Debug Sonar Secrets
+      run: |
+          echo "ORG=${{ secrets.SONAR_ORG }}"
+          echo "KEY=${{ secrets.SONAR_PROJECT_KEY }}"
+
     - name: SonarQube Scan
       uses: SonarSource/sonarcloud-github-action@master
       with:
