@@ -15,9 +15,6 @@ jobs:
 
     - name: SonarQube Scan
       uses: SonarSource/sonarcloud-github-action@master
-      with:
-           Organization Key: saisivaraj
-           Project Key: SAISIVARAJ_djando-app-containerization
       env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     
