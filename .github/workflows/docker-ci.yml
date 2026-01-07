@@ -13,13 +13,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: SonarQube Scan
-      uses: SonarSource/sonarcloud-github-action@master
-      with:
-        organization: saisivaraj
-        projectKey: SAISIVARAJ_djando-app-containerization
-      env: 
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
 
     - name: Login to Docker Hub
