@@ -12,17 +12,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      
-    - name: Debug Sonar Secrets
-      run: |
-          echo "ORG=${{ secrets.SONAR_ORG }}"
-          echo "KEY=${{ secrets.SONAR_PROJECT_KEY }}"
 
     - name: SonarQube Scan
       uses: SonarSource/sonarcloud-github-action@master
       with:
-        organization: ${{ secrets.SONAR_ORG }}
-        projectKey: ${{ secrets.SONAR_PROJECT_KEY }}
+        organization: saisivaraj
+        projectKey: SAISIVARAJ_djando-app-containerization
       env: 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
